@@ -1,8 +1,8 @@
 # auto_suggestion
 
-## Étapes d'installation
-### 1-Cloner le projet
-### 2-Ouvrer le fichier /src/index.html sur le navigateur
-### 3-Activer la connexion internet
+## Install steps
+### 1-Clone this project
+### 2-Open "/src/index.html" file on browser
+### 3-Activate internet connection
 
-## Ou cliquer ce lien: https://auto-suggestion.vercel.app/
+## Or click this link: https://auto-suggestion.vercel.app/
