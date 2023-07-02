@@ -2,6 +2,7 @@
   var results = document.querySelector('.results');
   const resultBlock = document.getElementById('result');
   const iconClear = document.getElementById('clear');
+  // const form = document.getElementById('form');
 
   // Réinitialiser le formulaire
   iconClear.addEventListener('click', () => {
@@ -44,6 +45,10 @@
       // (par exemple, lancer la recherche, afficher les résultats, etc.)
     }
   });
+
+  // form.addEventListener("submit", function(e) {
+  //   console.log(searchInput.value);
+  // });
 
 
   function createElementResult(suggestText = 'No search') {
