@@ -1,21 +1,32 @@
   var searchInput = document.getElementById('input-form');
   var results = document.querySelector('.results');
-  
+  const resultBlock = document.getElementById('result');
+  const iconClear = document.getElementById('clear');
+
+  // Réinitialiser le formulaire
+  iconClear.addEventListener('click', () => {
+    searchInput.value = '';
+  })
+
+
+  let resultListElement = [];
+  resultBlock.style.display = 'none'
   //  Prend les recherches precedentes dans le cookie
-  var suggestionList = getCookie("suggestionList").split(','); 
-  
+  var suggestionList = getCookie("suggestionList").split(',');
   // Gérer l'événement de saisie de l'utilisateur pour fournir des suggestions
   searchInput.addEventListener("input", function (event) {
+    if (event.target.value === '') {
+      resultBlock.style.display = 'none'
+    } else {
+      resultBlock.style.display = 'flex';
+    }
     var inputValue = searchInput.value;
     var suggestedWords = suggest(inputValue, suggestionList);
-    
-    console.log(suggestedWords)        
-    // Afficher les suggestions
-    // ... Logique pour afficher les suggestions dans l'interface utilisateur ...
+    insertResult(suggestedWords);
   });
 
 
-  //  Le recherche est lancé
+  //  La recherche est lancée
   searchInput.addEventListener("keydown", function(event) {
     // event.preventDefault();    
     if (event.keyCode === 13) {
@@ -33,6 +44,41 @@
       // (par exemple, lancer la recherche, afficher les résultats, etc.)
     }
   });
+
+
+  function createElementResult(suggestText = 'No search') {
+    const resultItemBlock = document.createElement('div');
+    const imageLatest = document.createElement('img');
+    const suggestTextContainer = document.createElement('span');
+
+    suggestTextContainer.className = 'suggest';
+    suggestTextContainer.textContent = suggestText;
+    resultItemBlock.className = 'result-item';
+    imageLatest.src = 'https://img.icons8.com/windows/32/time-machine.png';
+    imageLatest.alt = 'Icon latest';
+    resultItemBlock.appendChild(imageLatest);
+    resultItemBlock.appendChild(suggestTextContainer);
+    resultBlock.addEventListener('click', (event) => {
+      searchInput.value = suggestText
+    })
+    return resultItemBlock;1
+
+  }
+
+  function insertResult(suggestList = []) {
+    resultListElement = [];
+    resultBlock.innerHTML = '';
+    if (suggestList.length === 0) {
+      resultBlock.appendChild(createElementResult('No similarity...'));
+    } else {
+      suggestList.map((item) => {
+        resultListElement.push(createElementResult(item));
+      })
+    }
+    resultListElement.map((item) => {
+      resultBlock.appendChild(item)
+    })
+  }
 
   function levenshteinDistance(ch1, ch2) {
     // Création d'une matrice pour stocker les distances

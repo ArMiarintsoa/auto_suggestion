@@ -10,17 +10,20 @@
 <body>
     <form class="form-block">
         <div class="form-container">
+            <div class="info">
+                <img src="https://img.icons8.com/ios/50/info--v1.png"  alt="">
+                <span>😀 Hit "enter" after writing something</span>
+            </div>
             <div class="input-block">
                 <img src="https://img.icons8.com/ios-filled/50/search--v1.png" class="search-icon" alt="Icon search">
-                <input class="input-form" type="text" id="input-form" placeholder="Search...">
-                <img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="Icon close" class="close search-icon">
+                <input class="input-form" type="text" id="input-form" placeholder="Search something..." autocomplete="false">
+                <img id="clear" src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="Icon close" class="close search-icon">
             </div>
-            <div class="results">
-                resultat
+            <div id="result" class="results">
+                
             </div>
         </div>
     </form>
-
     <script src="../script/script.js"></script>
 </body>
 </html>
