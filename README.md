@@ -5,4 +5,4 @@
 ### 2-Ouvrer le fichier /src/index.html sur le navigateur
 ### 3-Activer la connexion internet
 
-## Ou cliquer ce lien: 
+## Ou cliquer ce lien: https://auto-suggestion.vercel.app/
